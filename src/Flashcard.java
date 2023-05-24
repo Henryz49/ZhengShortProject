@@ -7,6 +7,8 @@ public class Flashcard {
         backText = null;
     }
 
+
+
     public String getMainText() {
         return mainText;
     }
