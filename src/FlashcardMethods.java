@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 public class FlashcardMethods {
@@ -49,11 +50,36 @@ public class FlashcardMethods {
         cardList.set(index - 1, card);
     }
 
-
-    public static String practice(ArrayList<Flashcard> cardList){
+    public static void removeCard(ArrayList<Flashcard> cardList){
         Scanner input = new Scanner(System.in);
-        return "a";
+        FlashcardMethods.printCardList(cardList);
+        System.out.println("Which item would you like to remove? (Enter corresponding number)");
+        int index = Integer.parseInt(input.nextLine());
+        cardList.remove(index-1);
+        System.out.print("Done");
     }
-
+    public static void practice(ArrayList<Flashcard> cardList){
+        Scanner input = new Scanner(System.in);
+        int correct = 0;
+        int len = cardList.size();
+        System.out.println("\n \n \n \n \n \n \n \n \n");
+        System.out.println("Input the correct back text of these flash cards");
+        for(Flashcard card: cardList){
+            System.out.print(card.getMainText() + " : ");
+            String answer = input.nextLine();
+            if(answer.equals(card.getBackText())){
+                correct++;
+                System.out.println("Correct!");
+            } else{
+                System.out.println("Incorrect!");
+            }
+        }
+        double temp = correct;
+        double percent = temp/len * 100;
+        System.out.println("You got " + correct + " out of " + len + " correct!\nThat is a percent score of " + percent + "%");
+        if(percent >= 65){
+            System.out.println("You are passing");
+        } else {System.out.println("You are failing!");}
+    }
 
 }

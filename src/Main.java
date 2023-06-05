@@ -9,7 +9,7 @@ public class Main{
         boolean running = true; //keeps the code going until the user wants to stop it
         while(running){
 
-            System.out.println("\nWhat would you like to do? Would you like to: \n (C)reate new flashcard \n (E)dit a flashcard \n " +
+            System.out.println("\nWhat would you like to do? Would you like to: \n (C)reate new flashcard \n (R)emove a flashcard \n (E)dit a flashcard \n " +
                     "(P)ractice \n (S)how flashcards \n (End) program" );
             String userInput = input.nextLine().toLowerCase();
 
@@ -23,7 +23,11 @@ public class Main{
                 FlashcardMethods.printCardList(cardList);}
                 else{System.out.println("You do not have anything in your list, try creating some flashcards first.");}
             }
-
+            else if(userInput.equals("r")){
+                if(cardList.size() > 0){
+                    FlashcardMethods.removeCard(cardList);}
+                else{System.out.println("You do not have anything in your list, try creating some flashcards first.");}
+            }
             else if(userInput.equals("c")){
                 FlashcardMethods.createCard(cardList);
                 System.out.println("Done");
@@ -36,6 +40,12 @@ public class Main{
                 } else {
                     System.out.println("You cannot do that right now, try creating flashcards first.");
                 }
+            }
+
+            else if(userInput.equals("p")){
+                if(cardList.size() > 0){
+                    FlashcardMethods.practice(cardList);}
+                else{System.out.println("You do not have anything in your list, try creating some flashcards first.");}
             }
 
 
